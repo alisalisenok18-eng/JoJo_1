@@ -1,0 +1,21 @@
+﻿@model List<JoJo.Models.Character>
+
+@{
+    ViewData["Title"] = "Голосование";
+}
+
+<h1>Голосование за лучшего ДжоДжо</h1>
+
+<form method="post" asp-controller="Vote" asp-action="VoteResult">
+    <div class="list-group mb-3">
+        @foreach (var c in Model)
+        {
+            <label class="list-group-item d-flex gap-2">
+                <input class="form-check-input flex-shrink-0" type="radio"
+                       name="selectedId" value="@c.Id" />
+                <span>@c.Name — <em>@c.Part</em></span>
+            </label>
+        }
+    </div>
+    <button type="submit" class="btn btn-success">Проголосовать</button>
+</form>

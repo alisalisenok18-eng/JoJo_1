@@ -1,0 +1,22 @@
+﻿@model List<JoJo.Models.Character>
+
+@{
+    ViewData["Title"] = "Результаты голосования";
+}
+
+<h1>Результаты голосования</h1>
+<p class="text-muted">Условные результаты (демонстрация страницы).</p>
+
+<ul class="list-group">
+    @{
+        int rank = 1;
+    }
+    @foreach (var c in Model.Take(5))
+    {
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>@rank. @c.Name</span>
+            <span class="badge bg-primary rounded-pill">@(100 - rank * 10)%</span>
+        </li>
+        rank++;
+    }
+</ul>
